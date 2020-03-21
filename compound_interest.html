@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Calculator</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <style>
+
+  	.body{
+  		background-image: url('https://images.all-free-download.com/images/graphiclarge/beautiful_stage_lighting_03_hd_picture_171020.jpg'); 
+  		background-repeat: no-repeat;
+  		 background-size: cover;"
+  	}
+
+  	.container {
+  		width: 450px;
+  		height: 40px;
+  	}
+
+  	.text-success{
+  		/* color: rgb(72, 226, 149);*/
+  		color: rgb(242, 135, 137);
+  		padding-top:55px;
+  		text-decoration: underline;
+  		letter-spacing: 3px;
+  		text-shadow: 3px 2px white;
+  		
+  	}
+
+  </style>
+
+</head>
+
+<body class="body">
+	
+	<h2 class="text-success text-center">COMPOUND INTEREST CALCULATOR</h2><br>
+
+	<div class="container"><br>
+		
+		<table class="table table-dark table-striped" style="border: 5px solid white;">
+			<tr>
+				<td>Principal Amount (P)</td>
+				<td><input type="number" id="amt"></td>
+			</tr>
+
+			<tr>
+				<td>Interest Rate (R)</td>
+				<td><input type="number" id="rate"></td>
+			</tr>
+
+			<tr>
+				<td>No. of times interest applied (N)</td>
+				<td>
+					<!--<select id="n-time">
+					
+					<option>Yearly</option>
+					<option>Half Yearly</option>
+					<option>Quaterly</option>
+					<option>Monthly</option>
+					
+					</select> -->
+					<input type="number" id="n-time">
+				</td>
+			</tr>
+
+			<tr>
+				<td>Time Periods (T in years)</td>
+				<td><input type="number" id="year"></td>
+			</tr>
+
+			<tr>
+				<td>Final Amount</td>
+				<td><input type="number" id="final"></td>
+			</tr>
+
+			<tr>
+				<td><input type="submit" name="submit" value="submit" class="btn btn-success" autocomplete="off" onclick="return compoundInterest()"></td>
+
+			<!--	<td><input type="button" value="Reset" class="btn btn-success" onclick="Reset()"> </td> -->
+				
+			</tr>  
+
+		</table>
+
+	</div>
+
+
+	<script type="text/javascript">
+		
+		function compoundInterest(){
+
+		/*	var p = eval(amt.value);
+			var r = eval(rate.value);
+			var n = eval(n-time.value);
+			var t = eval(year.value);
+			var f = eval(final.value);*/
+
+			var p = Number(document.getElementById("amt").value);
+			var r = Number(document.getElementById("rate").value);
+			var n = document.getElementById("n-time").value;
+			var t = Number(document.getElementById("year").value);
+			
+			/*final.value = p(1+r/n)**n*t;*/
+
+			/*var tm = 0;
+			if ( n=="Yearly") 
+				tm = t*1;
+			else if (n=="Half Yearly")
+				tm = t*2;
+			else if (n=="Quaterly")
+				tm = t*3;
+			else if(n=="Monthly")
+				tm = t*12;*/
+
+			var total = (p*Math.pow(1+(r/(n*100)),(t*n)));
+
+			document.getElementById("final").value = total;
+
+			/*alert(f.innerHTML = total);	*/	 
+		}
+
+	/*	function Reset(){
+
+			document.getElementById("Reset").reset();
+
+		}  */
+
+	</script>
+
+
+
+
+</body>
+
+</html>
